@@ -36,31 +36,41 @@
 | shipping_area_id   | integer    | null: false                    |
 | day_id             | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
-
+| order              | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-
+- belongs_to :user
+- belongs_to :order
 
 
 ## ordersテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| card_information   | integer    | null: false                    |
-| expiration_date    | integer    | null: false                    |
-| security_code      | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
+| address            | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :address
+
+
+## addressesテーブル
+
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | local_government   | string     | null: false                    |
 | address            | string     | null: false                    |
 | building           | string     |                                |
 | phone_number       | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
-
+| order              | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users
+- belongs_to :order
