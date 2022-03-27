@@ -36,12 +36,12 @@
 | shipping_area_id   | integer    | null: false                    |
 | day_id             | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
-| order              | references | null: false, foreign_key: true |
+
 
 ### Association
 
 - belongs_to :user
-- belongs_to :order
+
 
 
 ## ordersテーブル
@@ -49,13 +49,15 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
-| address            | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :address
+- has_one :item
+- has_one :address
+
 
 
 ## addressesテーブル
@@ -73,4 +75,4 @@
 
 ### Association
 
-- belongs_to :order
+- has_one :order
