@@ -7,10 +7,16 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'は半角英数字を両方含める必要があります' }
 
-  validates :family_name, presence: true
-  validates :first_name, presence: true
-  validates :furigana_family_name, presence: true
-  validates :furigana_first_name, presence: true
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
+    validates :family_name
+    validates :first_name
+  end
+
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カタカナを使用してください' } do
+    validates :furigana_family_name
+    validates :furigana_first_name
+  end
+
   validates :birthday, presence: true
 
 end
