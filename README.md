@@ -29,7 +29,6 @@
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
 | price              | integer    | null: false                    |
-| seller             | text       | null: false                    |
 | description        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
