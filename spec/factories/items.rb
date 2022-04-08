@@ -7,7 +7,7 @@ FactoryBot.define do
     condition_id        {2}
     delivery_charge_id  {2}
     shipping_area_id    {2}
-    day_id              {2}
+    scheduled_day_id    {2}
 
     association :user
 

@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品の出品' do
     context '商品の出品ができる場合' do
-      it 'title,image,price,description,category_id,condition_id,delivery_charge_id,shipping_area_id,day_idが全て存在すれば出品できる' do
+      it 'title,image,price,description,category_id,condition_id,delivery_charge_id,shipping_area_id,scheduled_day_idが全て存在すれば出品できる' do
         expect(@item).to be_valid
       end
     end
@@ -79,10 +79,11 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping area can't be blank")
       end
 
-      it 'day_idが空では出品できない' do
-        @item.day_id = ''
+      it 'scheduled_day_idが空では出品できない' do
+        @item.scheduled_day_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day can't be blank")
+        binding.pry
+        expect(@item.errors.full_messages).to include("Scheduled day can't be blank")
       end
 
       it 'userが紐づいていないと出品できない' do

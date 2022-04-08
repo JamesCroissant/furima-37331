@@ -34,7 +34,7 @@
 | condition_id       | integer    | null: false                    |
 | delivery_charge_id | integer    | null: false                    |
 | shipping_area_id   | integer    | null: false                    |
-| day_id             | integer    | null: false                    |
+| scheduled_day_id   | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 
