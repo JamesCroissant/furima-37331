@@ -14,15 +14,15 @@ class Item < ApplicationRecord
   validates :description,  presence: true
   validates :category_id,   numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id,  numericality: { other_than: 1, message: "can't be blank" }
-  validates :delivery_charge_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :delivery_charge_id,  numericality: { other_than: 1, message: "can't be blank" }
   validates :shipping_area_id,  numericality: { other_than: 1, message: "can't be blank" }
   validates :scheduled_day_id,  numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
-                    allow_blank: true
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}, format: { with: /\A[0-9]+\z/} , allow_blank: true
   validates :price, presence: true
+    
 
   def self.search(search)
-    if search != ''
+    if search!=""
       Item.where('text LIKE(?)', "%#{search}%")
     else
       Item.all
